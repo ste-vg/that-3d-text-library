@@ -8,9 +8,7 @@ class That3DText {
     this.init();
   }
 
-  private init() {
-    console.log('That 3D Init');
-  }
+  private init() {}
 
   public get word() {
     return this._word;
