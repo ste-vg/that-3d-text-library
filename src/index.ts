@@ -1,6 +1,8 @@
 class That3DText {
   private element: HTMLElement;
-  private _word: string = '';
+  private wordString: string = '';
+  private letters: string[] = [];
+  private layers: number = 1;
 
   constructor(element: HTMLElement) {
     this.element = element;
@@ -8,11 +10,13 @@ class That3DText {
   }
 
   private init() {
-    this._word = this.element.innerHTML;
+    this.wordString = this.element.innerHTML;
+    this.element.innerHTML = '';
+    this.element.setAttribute('aria-label', this.wordString);
   }
 
   public get word() {
-    return this._word;
+    return this.wordString;
   }
 }
 

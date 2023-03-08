@@ -1,6 +1,6 @@
 import { That3DText } from './index';
 
-test('That3DText', () => {
+test('Set aria-label', () => {
   document.body.innerHTML = `
     <div>
       <span id="test">Hello</span>
@@ -8,6 +8,8 @@ test('That3DText', () => {
   `;
 
   const testElement = document.querySelector('#test') as HTMLElement;
+  const that3DTEXT = new That3DText(testElement);
 
-  expect(new That3DText(testElement).word).toBe('Hello');
+  expect(that3DTEXT.word).toBe('Hello');
+  expect(testElement.getAttribute('aria-label')).toBe('Hello');
 });
