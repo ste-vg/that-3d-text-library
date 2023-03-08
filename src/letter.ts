@@ -27,12 +27,12 @@ class That3DLetter {
       const span = document.createElement('span');
       span.setAttribute('aria-hidden', 'true');
       span.classList.add('letter');
-      span.classList.add(i == 0 ? 'front' : 'under');
-      if (i == count - 1) span.classList.add('back');
+      span.classList.add(i === 0 ? 'front' : 'under');
+      if (i === count - 1) span.classList.add('back');
       span.innerHTML = this.character === ' ' ? '&nbsp;' : this.character;
-      span.dataset['depth'] = layer.toString();
-      span.dataset['index'] = this.index.toString();
-      span.dataset['character'] = this.character;
+      span.dataset.depth = layer.toString();
+      span.dataset.index = this.index.toString();
+      span.dataset.character = this.character;
       span.style.setProperty('--layer', (count - layer).toString());
       span.style.setProperty(
         '--centerOffset',
