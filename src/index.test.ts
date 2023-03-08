@@ -1,15 +1,16 @@
-import { That3DText } from './index';
+import { Those3DTexts } from './index';
 
-test('Set aria-label', () => {
+test('Create words using default selector', () => {
   document.body.innerHTML = `
     <div>
-      <span id="test">Hello</span>
+      <span data-3d-text>Lorem</span>
+      <span data-3d-text>Ipsum</span>
     </div>
   `;
 
-  const testElement = document.querySelector('#test') as HTMLElement;
-  const that3DTEXT = new That3DText(testElement);
+  const texts = new Those3DTexts();
 
-  expect(that3DTEXT.word).toBe('Hello');
-  expect(testElement.getAttribute('aria-label')).toBe('Hello');
+  expect(texts.words.length).toBe(2);
+  expect(texts.words[0].element.getAttribute('aria-label')).toBe('Lorem');
+  expect(texts.words[1].element.getAttribute('aria-label')).toBe('Ipsum');
 });

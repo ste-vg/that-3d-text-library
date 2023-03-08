@@ -1,23 +1,14 @@
-class That3DText {
-  private element: HTMLElement;
-  private wordString: string = '';
-  private letters: string[] = [];
-  private layers: number = 1;
+import { That3DWord } from './word';
 
-  constructor(element: HTMLElement) {
-    this.element = element;
-    this.init();
-  }
+class Those3DTexts {
+  public words: That3DWord[] = [];
 
-  private init() {
-    this.wordString = this.element.innerHTML;
-    this.element.innerHTML = '';
-    this.element.setAttribute('aria-label', this.wordString);
-  }
-
-  public get word() {
-    return this.wordString;
+  constructor(selector: string = '[data-3d-text]') {
+    const elements = [...document.querySelectorAll(selector)];
+    this.words = elements
+      .filter((element) => (element ? true : false))
+      .map((element) => new That3DWord(element as HTMLElement));
   }
 }
 
-export { That3DText };
+export { Those3DTexts, That3DWord };
