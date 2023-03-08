@@ -1,14 +1,15 @@
 class That3DText {
   private element: HTMLElement;
-  private _word: string;
+  private _word: string = '';
 
   constructor(element: HTMLElement) {
     this.element = element;
-    this._word = element.innerHTML;
     this.init();
   }
 
-  private init() {}
+  private init() {
+    this._word = this.element.innerHTML;
+  }
 
   public get word() {
     return this._word;
