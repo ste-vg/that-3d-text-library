@@ -1,4 +1,4 @@
-import { Those3DTexts } from './index';
+import { Those3DTexts } from '../index';
 
 test('Create words using default selector', () => {
   document.body.innerHTML = `

@@ -1,4 +1,4 @@
-import { That3DWord } from './word';
+import { That3DWord } from '../word';
 
 test('Set aria-label', () => {
   document.body.innerHTML = `
