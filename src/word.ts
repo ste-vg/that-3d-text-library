@@ -8,7 +8,20 @@ class That3DWord {
   constructor(element: HTMLElement, layers?: number) {
     this.element = element;
 
-    if (layers) this.layers = layers;
+    const style = getComputedStyle(this.element);
+
+    if (layers) {
+      this.layers = layers;
+    } else if (this.element.dataset.layers) {
+      const newLayersValue = Number(this.element.dataset.layers);
+      if (!isNaN(newLayersValue)) this.layers = newLayersValue;
+    } else {
+      const customPropLayers = style.getPropertyValue('--layers');
+      if (customPropLayers) this.layers = Number(customPropLayers);
+    }
+
+    style.setProperty('--layers', this.layers.toString());
+
     this.init();
   }
 
@@ -19,8 +32,6 @@ class That3DWord {
     this.element.classList.add('that-3d-word');
 
     const letterStrings = this.wordString.split('');
-    const style = getComputedStyle(this.element);
-    if (!this.layers) this.layers = Number(style.getPropertyValue('--layers'));
 
     this.letters = letterStrings.map(
       (letter, i) => new That3DLetter(letter, this.layers, this.element, i),
