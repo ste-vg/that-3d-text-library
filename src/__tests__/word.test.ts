@@ -31,12 +31,14 @@ test('Set layers correctly', () => {
   document.body.innerHTML = `
     <div>
       <span id="default">Hello</span>
+      <span id="defined">Hello</span>
       <span id="customProp" style="--layers: 8">Hello</span>
       <span id="data" data-layers="2">Hello</span>
     </div>
   `;
 
   const defaultElement = document.querySelector('#default') as HTMLElement;
+  const definedElement = document.querySelector('#defined') as HTMLElement;
   const customPropElement = document.querySelector(
     '#customProp',
   ) as HTMLElement;
@@ -44,7 +46,7 @@ test('Set layers correctly', () => {
 
   const defaultWord = new That3DWord(defaultElement);
   const customWord = new That3DWord(customPropElement);
-  const definedWord = new That3DWord(customPropElement, 6);
+  const definedWord = new That3DWord(definedElement, 6);
   const dataWord = new That3DWord(dataElement);
 
   const styleDefault = getComputedStyle(defaultWord.element);
@@ -52,8 +54,8 @@ test('Set layers correctly', () => {
   const styleDefined = getComputedStyle(definedWord.element);
   const styleData = getComputedStyle(dataWord.element);
 
-  // expect(styleDefault.getPropertyValue('--layers')).toBe('3');
-  // expect(styleCustom.getPropertyValue('--layers')).toBe('8');
-  // expect(styleDefined.getPropertyValue('--layers')).toBe('6');
-  // expect(styleData.getPropertyValue('--layers')).toBe('2');
+  expect(styleDefault.getPropertyValue('--layers')).toBe('3');
+  expect(styleCustom.getPropertyValue('--layers')).toBe('8');
+  expect(styleDefined.getPropertyValue('--layers')).toBe('6');
+  expect(styleData.getPropertyValue('--layers')).toBe('2');
 });

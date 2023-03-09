@@ -20,7 +20,7 @@ class That3DWord {
       if (customPropLayers) this.layers = Number(customPropLayers);
     }
 
-    style.setProperty('--layers', this.layers.toString());
+    this.element.style.setProperty('--layers', this.layers.toString());
 
     this.init();
   }
