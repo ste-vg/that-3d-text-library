@@ -1,0 +1,67 @@
+.that-3d-word {
+  --layers: 5;
+  --depth: 30;
+  --increment: 1rem;
+
+  --color: darkred;
+  --color-front: red;
+  --color-back: var(--color);
+
+  z-index: 1;
+  transform-style: preserve-3d;
+  position: relative;
+  transform: rotatey(0deg);
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+
+  .letter {
+    --layer-space: calc(var(--depth) / var(--layers));
+    --zStack: calc((var(--layer) * var(--layer-space)) * var(--increment));
+    --xPositionOffset: 50%;
+    --yPositionOffset: 50%;
+    --zPositionOffset: calc(
+      var(--increment) * ((var(--depth) * 0.5) * var(--centerOffset))
+    );
+
+    transform-style: preserve-3d;
+    position: relative;
+    color: var(--color);
+    backface-visibility: hidden;
+    transform: translateX(
+        calc((var(--x, 0) + var(--xOffset, 0)) * var(--increment))
+      )
+      translateY(calc(var(--y, 0) * var(--increment)))
+      translateZ(
+        calc(
+          ((var(--z, 0) - (var(--depth) * 0.5)) * var(--increment)) +
+            var(--zStack)
+        )
+      )
+      rotateZ(calc(var(--rotateZ, 0) * 1deg))
+      rotateY(calc(var(--rotateY, 0) * 1deg))
+      rotateX(calc(var(--rotateX, 0) * 1deg));
+    transform-origin: var(--xPositionOffset) var(--yPositionOffset)
+      var(--zPositionOffset);
+
+    &.front {
+      color: var(--color-front);
+      display: inline-block;
+    }
+
+    &.under {
+      position: absolute;
+      top: 0;
+      left: calc(var(--xPos, 0) * 1px);
+      pointer-events: none;
+      user-select: none;
+      display: inline-block;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    &.back {
+      color: var(--color-back);
+    }
+  }
+}

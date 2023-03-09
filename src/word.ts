@@ -1,5 +1,4 @@
 import { That3DLetter } from './letter';
-
 class That3DWord {
   public element: HTMLElement;
   private wordString: string = '';
@@ -17,6 +16,7 @@ class That3DWord {
     this.wordString = this.element.innerHTML;
     this.element.innerHTML = '';
     this.element.setAttribute('aria-label', this.wordString);
+    this.element.classList.add('that-3d-word');
 
     const letterStrings = this.wordString.split('');
     const style = getComputedStyle(this.element);
