@@ -15,7 +15,7 @@
   padding: 0;
   display: inline-block;
 
-  .letter {
+  .that-3d-letter {
     --layer-space: calc(var(--depth) / var(--layers));
     --zStack: calc((var(--layer) * var(--layer-space)) * var(--increment));
     --xPositionOffset: 50%;

@@ -3,7 +3,7 @@ class That3DWord {
   public element: HTMLElement;
   private wordString: string = '';
   private letters: That3DLetter[] = [];
-  private layers: number = 0;
+  private layers: number = 3;
 
   constructor(element: HTMLElement, layers?: number) {
     this.element = element;

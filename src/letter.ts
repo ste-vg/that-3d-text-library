@@ -1,3 +1,7 @@
+enum LETTER_ERRORS {
+  characterLength = 'letterString should have a length of 1',
+}
+
 class That3DLetter {
   private container: HTMLElement;
   private mainElement: HTMLElement | null = null;
@@ -17,6 +21,9 @@ class That3DLetter {
 
     this.index = index;
 
+    if (this.character.length !== 1)
+      throw new Error(LETTER_ERRORS.characterLength);
+
     this.createLayers(count);
   }
 
@@ -26,7 +33,7 @@ class That3DLetter {
 
       const span = document.createElement('span');
       span.setAttribute('aria-hidden', 'true');
-      span.classList.add('letter');
+      span.classList.add('that-3d-letter');
       span.classList.add(i === 0 ? 'front' : 'under');
       if (i === count - 1) span.classList.add('back');
       span.innerHTML = this.character === ' ' ? '&nbsp;' : this.character;
@@ -60,4 +67,4 @@ class That3DLetter {
   }
 }
 
-export { That3DLetter };
+export { That3DLetter, LETTER_ERRORS };
