@@ -8,6 +8,12 @@ class Those3DTexts {
     this.words = elements
       .filter((element) => (element ? true : false))
       .map((element) => new That3DWord(element as HTMLElement));
+
+    if (window) window.addEventListener('resize', () => this.onResize());
+  }
+
+  private onResize() {
+    this.words.forEach((word) => word.resize());
   }
 }
 

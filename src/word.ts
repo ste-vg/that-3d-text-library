@@ -36,13 +36,15 @@ class That3DWord {
     this.letters = letterStrings.map(
       (letter, i) => new That3DLetter(letter, this.layers, this.element, i),
     );
+
+    this.resize();
   }
 
   public reset() {
     this.init();
   }
 
-  public onResize() {
+  public resize() {
     this.element.style.setProperty(
       '--width',
       this.element.clientWidth.toString(),
