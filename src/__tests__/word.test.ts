@@ -25,6 +25,7 @@ test('Create all letters', () => {
   const that3DTEXT = new That3DWord(testElement);
 
   expect(testElement.childNodes.length).toBe(5 * 8);
+  expect(that3DTEXT.element.dataset.textReady).toBe('true');
 });
 
 test('Set layers correctly', () => {
