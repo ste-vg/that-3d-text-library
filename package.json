@@ -1,6 +1,6 @@
 {
   "name": "that-3d-text-library",
-  "version": "0.0.1-alpha.5",
+  "version": "0.0.1-alpha.6",
   "description": "A little library to create 3D text effects in HTML and CSS",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
