@@ -24,7 +24,7 @@ test('Create all letters', () => {
   const testElement = document.querySelector('#test') as HTMLElement;
   const that3DTEXT = new That3DWord(testElement);
 
-  expect(testElement.childNodes.length).toBe(5 * 3);
+  expect(testElement.childNodes.length).toBe(5 * 6);
 });
 
 test('Set layers correctly', () => {
@@ -46,7 +46,7 @@ test('Set layers correctly', () => {
 
   const defaultWord = new That3DWord(defaultElement);
   const customWord = new That3DWord(customPropElement);
-  const definedWord = new That3DWord(definedElement, 6);
+  const definedWord = new That3DWord(definedElement, 3);
   const dataWord = new That3DWord(dataElement);
 
   const styleDefault = getComputedStyle(defaultWord.element);
@@ -54,8 +54,8 @@ test('Set layers correctly', () => {
   const styleDefined = getComputedStyle(definedWord.element);
   const styleData = getComputedStyle(dataWord.element);
 
-  expect(styleDefault.getPropertyValue('--layers')).toBe('3');
+  expect(styleDefault.getPropertyValue('--layers')).toBe('6');
   expect(styleCustom.getPropertyValue('--layers')).toBe('8');
-  expect(styleDefined.getPropertyValue('--layers')).toBe('6');
+  expect(styleDefined.getPropertyValue('--layers')).toBe('3');
   expect(styleData.getPropertyValue('--layers')).toBe('2');
 });
