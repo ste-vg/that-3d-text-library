@@ -1,6 +1,7 @@
+$fallback-increment: 0.01em;
+
 .that-3d-word {
   --depth: 30;
-  --increment: 0.1rem;
 
   --color: darkred;
   --color-front: red;
@@ -15,11 +16,15 @@
 
   .that-3d-letter {
     --layer-space: calc(var(--depth) / var(--layers));
-    --zStack: calc((var(--layer) * var(--layer-space)) * var(--increment));
+    --zStack: calc(
+      (var(--layer) * var(--layer-space)) *
+        var(--increment, #{$fallback-increment})
+    );
     --xPositionOffset: 50%;
     --yPositionOffset: 50%;
     --zPositionOffset: calc(
-      var(--increment) * ((var(--depth) * 0.5) * var(--centerOffset))
+      var(--increment, #{$fallback-increment}) *
+        ((var(--depth) * 0.5) * var(--centerOffset))
     );
 
     transform-style: preserve-3d;
@@ -27,13 +32,18 @@
     color: var(--color);
     backface-visibility: hidden;
     transform: translateX(
-        calc((var(--x, 0) + var(--xOffset, 0)) * var(--increment))
+        calc(
+          (var(--x, 0) + var(--xOffset, 0)) *
+            var(--increment, #{$fallback-increment})
+        )
       )
-      translateY(calc(var(--y, 0) * var(--increment)))
+      translateY(calc(var(--y, 0) * var(--increment, #{$fallback-increment})))
       translateZ(
         calc(
-          ((var(--z, 0) - (var(--depth) * 0.5)) * var(--increment)) +
-            var(--zStack)
+          (
+              (var(--z, 0) - (var(--depth) * 0.5)) *
+                var(--increment, #{$fallback-increment})
+            ) + var(--zStack)
         )
       )
       rotateZ(calc(var(--rotateZ, 0) * 1deg))
