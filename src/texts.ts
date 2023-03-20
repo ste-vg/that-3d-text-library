@@ -9,7 +9,10 @@ class Those3DTexts {
       .filter((element) => (element ? true : false))
       .map((element) => new That3DWord(element as HTMLElement));
 
-    if (window) window.addEventListener('resize', () => this.onResize());
+    if (window) {
+      window.addEventListener('resize', () => this.onResize());
+      setTimeout(() => this.onResize(), 100);
+    }
   }
 
   private onResize() {
