@@ -29,7 +29,7 @@ class That3DWord {
     this.wordString = this.element.innerHTML;
     this.element.innerHTML = '';
     this.element.setAttribute('aria-label', this.wordString);
-    this.element.setAttribute('data-text-ready', 'true');
+
     this.element.classList.add('that-3d-word');
 
     const letterStrings = this.wordString.split('');
@@ -39,6 +39,10 @@ class That3DWord {
     );
 
     this.resize();
+    setTimeout(() => {
+      this.resize();
+      this.element.setAttribute('data-text-ready', 'true');
+    }, 100);
   }
 
   public reset() {

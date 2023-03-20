@@ -11,7 +11,6 @@ class Those3DTexts {
 
     if (window) {
       window.addEventListener('resize', () => this.onResize());
-      setTimeout(() => this.onResize(), 100);
     }
   }
 
