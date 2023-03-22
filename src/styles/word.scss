@@ -48,7 +48,7 @@ $fallback-depth: 30;
       var(--zPositionOffset);
 
     &.front {
-      color: var(--color-front, currentcolor);
+      color: var(--color-front, var(--color, currentcolor));
       display: inline-block;
     }
 
@@ -64,7 +64,7 @@ $fallback-depth: 30;
     }
 
     &.back {
-      color: var(--color-back, currentcolor);
+      color: var(--color-back, var(--color, currentcolor));
     }
   }
 }
