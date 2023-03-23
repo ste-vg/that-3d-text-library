@@ -25,7 +25,7 @@ $fallback-depth: 30;
     transform-style: flat;
     position: relative;
     color: var(--color, currentcolor);
-    backface-visibility: hidden;
+    backface-visibility: visible;
     transform: translateX(
         calc(
           (var(--x, 0) + var(--xOffset, 0)) *
