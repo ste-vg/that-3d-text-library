@@ -22,7 +22,7 @@ $fallback-depth: 30;
         ((var(--depth, #{$fallback-depth}) * 0.5) * var(--centerOffset))
     );
 
-    transform-style: preserve-3d;
+    transform-style: flat;
     position: relative;
     color: var(--color, currentcolor);
     backface-visibility: hidden;
