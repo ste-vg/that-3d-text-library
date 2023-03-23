@@ -32,7 +32,12 @@ $fallback-depth: 30;
             var(--increment, #{$fallback-increment})
         )
       )
-      translateY(calc(var(--y, 0) * var(--increment, #{$fallback-increment})))
+      translateY(
+        calc(
+          (var(--y, 0) + var(--yOffset, 0)) *
+            var(--increment, #{$fallback-increment})
+        )
+      )
       translateZ(
         calc(
           (
@@ -54,7 +59,7 @@ $fallback-depth: 30;
 
     &.under {
       position: absolute;
-      top: 0;
+      top: calc(var(--yPos, 0) * 1px);
       left: calc(var(--xPos, 0) * 1px);
       pointer-events: none;
       user-select: none;

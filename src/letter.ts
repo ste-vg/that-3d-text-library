@@ -59,9 +59,11 @@ class That3DLetter {
   public resize() {
     if (this.mainElement) {
       const x = this.mainElement.offsetLeft;
+      const y = this.mainElement.offsetTop;
 
       this.elements.forEach((span) => {
         span.style.setProperty('--xPos', x.toString());
+        span.style.setProperty('--yPos', y.toString());
       });
     }
   }
