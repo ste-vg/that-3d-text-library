@@ -41,6 +41,9 @@ test('Attributes added to letter layers', () => {
   const b2 = testElement.childNodes[5] as HTMLElement;
   const space = testElement.childNodes[10] as HTMLElement;
 
+  expect(a4.dataset[`mod-3`]).toBe('true');
+  expect(a1.dataset[`mod-2`]).toBe('true');
+
   expect(a1.dataset.depth).toBe('0');
   expect(a4.dataset.depth).toBe('3');
   expect(b2.dataset.depth).toBe('1');

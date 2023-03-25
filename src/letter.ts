@@ -40,6 +40,9 @@ class That3DLetter {
       span.dataset.depth = layer.toString();
       span.dataset.index = this.index.toString();
       span.dataset.character = this.character;
+      for (let j = 2; j < 9; j++) {
+        if (i % j === 0) span.dataset[`mod-${j}`] = 'true';
+      }
       span.style.setProperty('--layer', (count - layer).toString());
       span.style.setProperty(
         '--centerOffset',
