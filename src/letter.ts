@@ -44,6 +44,7 @@ class That3DLetter {
         if (i % j === 0) span.dataset[`mod-${j}`] = 'true';
       }
       span.style.setProperty('--layer', (count - layer).toString());
+      span.style.setProperty('--index', this.index.toString());
       span.style.setProperty(
         '--centerOffset',
         ((layer - (count - 1) * 0.5) / ((count - 1) * 0.5)).toString(),
