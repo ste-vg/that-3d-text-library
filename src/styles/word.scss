@@ -9,16 +9,23 @@ $fallback-depth: 30;
   padding: 0;
   display: inline-block;
 
+  &.safari {
+    --increment-factor: 0.5;
+  }
+
   .that-3d-letter {
+    --inc: calc(
+      var(--increment, #{$fallback-increment}) * var(--increment-factor, 1)
+    );
+
     --layer-space: calc(var(--depth, #{$fallback-depth}) / var(--layers));
     --zStack: calc(
-      (var(--layer) * var(--layer-space)) *
-        var(--increment, #{$fallback-increment})
+      (var(--layer) * var(--layer-space)) * var(--inc, #{$fallback-increment})
     );
     --xPositionOffset: 50%;
     --yPositionOffset: 50%;
     --zPositionOffset: calc(
-      var(--increment, #{$fallback-increment}) *
+      var(--inc, #{$fallback-increment}) *
         ((var(--depth, #{$fallback-depth}) * 0.5) * var(--centerOffset))
     );
 
@@ -28,21 +35,19 @@ $fallback-depth: 30;
     backface-visibility: visible;
     transform: translateX(
         calc(
-          (var(--x, 0) + var(--xOffset, 0)) *
-            var(--increment, #{$fallback-increment})
+          (var(--x, 0) + var(--xOffset, 0)) * var(--inc, #{$fallback-increment})
         )
       )
       translateY(
         calc(
-          (var(--y, 0) + var(--yOffset, 0)) *
-            var(--increment, #{$fallback-increment})
+          (var(--y, 0) + var(--yOffset, 0)) * var(--inc, #{$fallback-increment})
         )
       )
       translateZ(
         calc(
           (
               (var(--z, 0) - (var(--depth, #{$fallback-depth}) * 0.5)) *
-                var(--increment, #{$fallback-increment})
+                var(--inc, #{$fallback-increment})
             ) + var(--zStack)
         )
       )

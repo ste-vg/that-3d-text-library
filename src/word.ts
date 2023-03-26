@@ -22,6 +22,9 @@ class That3DWord {
 
     this.element.style.setProperty('--layers', this.layers.toString());
 
+    if (navigator && navigator.vendor.startsWith('Apple'))
+      this.element.classList.add('safari');
+
     this.init();
   }
 
